@@ -1,0 +1,38 @@
+module vending_machine_tb;
+//inputs
+reg clk;
+reg rst;
+reg [1:0] in;
+
+//outputs
+wire out;
+wire[1:0] change;
+
+//instantiate the unit under test(uut)
+vending_machine uut(
+    .clk(clk),
+    .rst(rst),
+    .in(in),
+    .out(out),
+    .change(change)
+ );
+ 
+ initial begin
+     //initialise inputs
+     
+     rst=1;
+     clk=0;
+    #6 rst=0;
+       in=1;
+      //wait 100 ns for global reset to finish
+    #11 in=1; 
+    #16 in=1;
+    #25 $finish;
+   
+   //add stimulus here
+ end 
+    always # 5 clk=~clk;
+         
+       
+
+endmodule
